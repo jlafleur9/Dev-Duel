@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/user.service';
 
 @Component({
@@ -7,9 +7,8 @@ import { UserService } from 'src/user.service';
   styleUrls: ['./inspect.component.css']
 })
 export class InspectComponent implements OnInit {
-
-  username: string = ""
-
+  username: string = "";
+  userData: any = null;  // Store the user data here
 
   constructor(private userService: UserService) { }
 
@@ -21,9 +20,12 @@ export class InspectComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.inspectUser(this.username);
+    this.userService.inspectUser(this.username)
+      .then((data: any) => {
+        this.userData = data;  // Assign the response data
+      })
+      .catch((error: any) => {
+        console.error('Error fetching user data:', error);  // Error handling
+      });
   }
-
-
-
 }
