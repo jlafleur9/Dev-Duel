@@ -11,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { TextInputComponent } from './Components/text-input/text-input.component';
 import { UserService } from 'src/user.service';
-import { DisplayUserComponent } from './display-user/display-user.component';
+import { DisplayUserComponent } from './Components/display-user/display-user.component';
+import { WinnerComponent } from './Components/winner/winner.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { DisplayUserComponent } from './display-user/display-user.component';
     HomeComponent,
     TextInputComponent,
     DisplayUserComponent,
+    WinnerComponent,
   ],
   imports: [
     BrowserModule,

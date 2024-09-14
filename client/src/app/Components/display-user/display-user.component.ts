@@ -7,10 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class DisplayUserComponent {
   @Input() userData: any;
-
-  constructor() { }
-
-  get hasUserData(): boolean {
-    return this.userData && Object.keys(this.userData).length > 0;
-  }
+  @Input() differingFields: { [key: string]: boolean } = {};
 }

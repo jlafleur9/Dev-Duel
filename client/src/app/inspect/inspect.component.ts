@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/user.service';
 
+
 @Component({
   selector: 'app-inspect',
   templateUrl: './inspect.component.html',

@@ -1,0 +1,7 @@
+.winner-text {
+    color: green;       /* Green color for the winner text */
+    font-weight: bold;  /* Bold text */
+    font-size: 1.5em;   /* Slightly larger font */
+    text-align: center; /* Center the text */
+  }
+  
