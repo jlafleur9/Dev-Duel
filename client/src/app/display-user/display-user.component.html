@@ -1,10 +1,15 @@
-<!-- display-user.component.html -->
-<div *ngIf="hasUserData; else noUserData">
-    <img [src]="userData.avatar_url" alt="User Avatar" width="100" />
-    <h2>{{ userData.name }}</h2>
+<div class="user-container">
+  <!-- Left side for avatar and bio -->
+  <div class="left-side">
+    <img [src]="userData.avatar_url" alt="{{userData.username}}'s avatar" class="avatar">
+    <p class="bio">{{ userData.bio }}</p>
+  </div>
+  
+  <!-- Right side for other user info -->
+  <div class="right-side">
     <p><strong>Username:</strong> {{ userData.username }}</p>
+    <p><strong>Name:</strong> {{ userData.name }}</p>
     <p><strong>Location:</strong> {{ userData.location }}</p>
-    <p><strong>Bio:</strong> {{ userData.bio }}</p>
     <p><strong>Favorite Language:</strong> {{ userData['favorite-language'] }}</p>
     <p><strong>Public Repos:</strong> {{ userData['public-repos'] }}</p>
     <p><strong>Total Stars:</strong> {{ userData['total-stars'] }}</p>
@@ -13,8 +18,4 @@
     <p><strong>Followers:</strong> {{ userData.followers }}</p>
     <p><strong>Following:</strong> {{ userData.following }}</p>
   </div>
-  
-  <ng-template #noUserData>
-    <p>No user data to display.</p>
-  </ng-template>
-  
+</div>

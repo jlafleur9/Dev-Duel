@@ -10,5 +10,13 @@
   <br />
   <br />
   <button class="submit-button" (click)="onSubmit()">Inspect</button>
-  <app-display-user [userData]="userData"></app-display-user>
+
+  <div *ngIf="hasSubmitted">
+    <div *ngIf="userData; else showError">
+      <app-display-user [userData]="userData"></app-display-user>
+    </div>
+    <ng-template #showError>
+      <p *ngIf="errorMessage">{{ errorMessage }}</p> <!-- Display the custom error message -->
+    </ng-template>
+</div>
 </div>

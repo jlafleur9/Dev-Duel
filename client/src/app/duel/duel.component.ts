@@ -9,6 +9,9 @@ import { UserService } from 'src/user.service';
 export class DuelComponent implements OnInit {
   usernameOne: string = ""
   usernameTwo: string = ""
+  userDataOne: any = null;
+  userDataTwo: any = null;
+  errorMessage: string = "";
 
   constructor(private userService: UserService) { }
 
@@ -24,6 +27,42 @@ export class DuelComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.duelUsers(this.usernameOne, this.usernameTwo);
-  }
+    this.errorMessage = "";
+    this.userDataOne = null;
+    this.userDataTwo = null;
+
+    Promise.allSettled([
+        this.userService.inspectUser(this.usernameOne),
+        this.userService.inspectUser(this.usernameTwo)
+    ])
+    .then((results: any[]) => {
+        // Handle the result of the first promise (usernameOne)
+        if (results[0].status === 'fulfilled') {
+            this.userDataOne = results[0].value;
+        } else {
+            this.errorMessage += `Error: ${this.usernameOne} not found. `;
+        }
+
+        // Handle the result of the second promise (usernameTwo)
+        if (results[1].status === 'fulfilled') {
+            this.userDataTwo = results[1].value;
+        } else {
+            this.errorMessage += `Error: ${this.usernameTwo} not found.`;
+        }
+
+        // Determine the winner if both users are valid
+        if (this.userDataOne && this.userDataTwo) {
+            if (this.userDataOne.followers > this.userDataTwo.followers) {
+                this.userDataOne.winner = true;
+                this.userDataTwo.winner = false;
+            } else if (this.userDataTwo.followers > this.userDataOne.followers) {
+                this.userDataOne.winner = false;
+                this.userDataTwo.winner = true;
+            } else {
+                this.userDataOne.winner = false;
+                this.userDataTwo.winner = false; // Tie
+            }
+        }
+    });
+}
 }

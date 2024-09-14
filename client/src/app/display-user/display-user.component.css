@@ -1,0 +1,36 @@
+/* display-user.component.css */
+.user-container {
+    display: flex;               /* Use flexbox to create two columns */
+    border: 1px solid #ccc;      /* Add a border around the container */
+    padding: 20px;               /* Add some padding */
+    border-radius: 10px;         /* Rounded corners */
+    max-width: 800px;            /* Set a max width for the container */
+    margin: 20px auto;           /* Center the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  .left-side {
+    flex: 1;                     /* Take up 50% of the width */
+    text-align: center;          /* Center content inside */
+    padding-right: 20px;         /* Add some space between left and right sections */
+    border-right: 1px solid #eee;/* Add a subtle divider line */
+  }
+  
+  .right-side {
+    flex: 2;                     /* Take up the remaining width */
+    padding-left: 20px;          /* Add some space between left and right sections */
+  }
+  
+  .avatar {
+    width: 150px;                /* Set avatar width */
+    height: 150px;               /* Set avatar height */
+    border-radius: 50%;          /* Make the avatar circular */
+    object-fit: cover;           /* Ensure the avatar maintains aspect ratio */
+    margin-bottom: 10px;         /* Space between avatar and bio */
+  }
+  
+  .bio {
+    font-style: italic;          /* Italicize the bio text */
+    color: #555;                 /* Set a softer color for the bio */
+  }
+  

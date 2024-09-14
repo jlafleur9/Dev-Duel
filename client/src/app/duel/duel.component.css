@@ -8,3 +8,15 @@ border: 1px solid #000000;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
 }
+/* duel.component.css */
+.duel-container {
+  display: flex;               /* Use flexbox to create a row */
+  justify-content: space-around; /* Space the user components evenly */
+  align-items: flex-start;     /* Align items at the top */
+  margin-top: 20px;            /* Add some space above the user display */
+}
+
+.user {
+  flex: 1;                     /* Take equal space */
+  margin: 0 10px;              /* Add some horizontal space between users */
+}

@@ -9,6 +9,8 @@ import { UserService } from 'src/user.service';
 export class InspectComponent implements OnInit {
   username: string = "";
   userData: any = null;  // Store the user data here
+  errorMessage: string = "";
+  hasSubmitted: boolean = false;
 
   constructor(private userService: UserService) { }
 
@@ -20,12 +22,17 @@ export class InspectComponent implements OnInit {
   }
 
   onSubmit() {
+    this.hasSubmitted = true;
+    this.userData = null;
+    this.errorMessage = "";
+    
     this.userService.inspectUser(this.username)
       .then((data: any) => {
-        this.userData = data;  // Assign the response data
+        this.userData = data;
       })
       .catch((error: any) => {
-        console.error('Error fetching user data:', error);  // Error handling
+        this.errorMessage = `Error: ${this.username} not found`;  // Custom error message
+        console.error('Error fetching user data:', error);
       });
   }
 }

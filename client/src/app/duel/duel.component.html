@@ -18,4 +18,27 @@
   <br />
   <br />
   <button class="submit-button" (click)="onSubmit()">Duel</button>
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+<!-- Display both users side by side -->
+<div *ngIf="userDataOne && userDataTwo" class="duel-container">
+  <div class="user">
+    <app-display-user [userData]="userDataOne"></app-display-user>
+  </div>
+  <div class="user">
+    <app-display-user [userData]="userDataTwo"></app-display-user>
+  </div>
+</div>
+
+<!-- Show the winner -->
+<div *ngIf="userDataOne && userDataTwo && (userDataOne.winner || userDataTwo.winner)">
+  <p><strong>Winner:</strong> 
+    {{ userDataOne.winner ? userDataOne.username : userDataTwo.username }}
+  </p>
+</div>
+
+<!-- Handle tie -->
+<div *ngIf="userDataOne && userDataTwo && !userDataOne.winner && !userDataTwo.winner">
+  <p><strong>It's a tie!</strong></p>
+</div>
 </div>
